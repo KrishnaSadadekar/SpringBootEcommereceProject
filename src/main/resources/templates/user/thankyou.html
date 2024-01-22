@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns: lang="en">
+<head>
+    <title th:text="${title}">My Spring Boot App</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="#" th:href="@{/fonts/style.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/jquery-ui.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.theme.default.min.css}">
+
+
+    <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div class="site-wrap">
+    <div th:insert="(~{user/base:: header})">This is my header</div>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <span class="icon-check_circle display-3 text-success"></span>
+                    <h2 class="display-3 text-black">Thank you!</h2>
+                    <p class="lead mb-5">Your order was successfuly completed.</p>
+                    <p><a href="#" th:href="@{/shop}" class="btn btn-sm height-auto px-4 py-3 btn-primary">Back to shop</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer th:insert="(~{user/base:: footer})">This is my footer</footer>
+
+
+</div>
+
+
+<script src="#" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script src="#" th:src="@{/js/jquery-ui.js}"></script>
+<script src="#" th:src="@{/js/popper.min.js}"></script>
+<script src="#" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="#" th:src="@{/js/owl.carousel.min.js}"></script>
+<script src="#" th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script src="#" th:src="@{/js/aos.js}"></script>
+
+<script src="#" th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

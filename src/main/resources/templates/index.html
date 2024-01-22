@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns: lang="en">
+<head>
+  <title th:text="${title}">My Spring Boot App</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="#" th:href="@{/fonts/style.css}">
+
+  <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" href="#" th:href="@{/css/magnific-popup.css}">
+  <link rel="stylesheet" href="#" th:href="@{/css/jquery-ui.css}">
+  <link rel="stylesheet" href="#" th:href="@{/css/owl.carousel.min.css}">
+  <link rel="stylesheet" href="#" th:href="@{/css/owl.theme.default.min.css}">
+
+
+  <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
+
+  <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
+
+</head>
+  <body>
+  
+  <div class="site-wrap">
+
+
+    <div th:unless="${#authorization.expression('isAuthenticated()')}"  th:insert="(~{components:: header})">This is my header</div>
+    <div th:if="${#authorization.expression('isAuthenticated()')}"  th:insert="(~{user/base:: header})">This is my header</div>
+
+    <div class="site-blocks-cover" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto order-md-2 align-self-start">
+            <div class="site-block-cover-content">
+            <h2 class="sub-title">#New Summer Collection 2019</h2>
+            <h1>Arrivals Sales</h1>
+            <p><a href="#" th:href="@{/shop}" class="btn btn-black rounded-0">Shop Now</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 order-1 align-self-end">
+            <img src="#" th:src="@{images/model_3.png}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="title-section mb-5">
+          <h2 class="text-uppercase"><span class="d-block">Discover</span> The Collections</h2>
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col-lg-8">
+            <div class="product-item sm-height full-height bg-gray">
+              <a href="#" class="product-category">Top Wear <span>25 items</span></a>
+              <img src="#" th:src="@{images/model_4.png}" alt="Image" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="product-item sm-height bg-gray mb-4">
+              <a href="#"  class="product-category">Men <span>25 items</span></a>
+              <img src="#" th:src="@{images/model_5.png}" alt="Image" class="img-fluid">
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="site-blocks-cover inner-page py-5" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto order-md-2 align-self-start">
+            <div class="site-block-cover-content">
+            <h2 class="sub-title">#New Summer Collection 2019</h2>
+            <h1>New Shoes</h1>
+            <p><a href="#" class="btn btn-black rounded-0">Shop Now</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 order-1 align-self-end">
+            <img src="#" th:src="@{images/model_6.png}" alt="Image" class="img-fluid" >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer th:insert="(~{components:: footer})">This is my footer</footer>
+  </div>
+
+  <script src="#" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+  <script src="#" th:src="@{/js/jquery-ui.js}"></script>
+  <script src="#" th:src="@{/js/popper.min.js}"></script>
+  <script src="#" th:src="@{/js/bootstrap.min.js}"></script>
+  <script src="#" th:src="@{/js/owl.carousel.min.js}"></script>
+  <script src="#" th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+  <script src="#" th:src="@{/js/aos.js}"></script>
+
+  <script src="#" th:src="@{/js/main.js}"></script>
+    
+  </body>
+</html>

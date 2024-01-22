@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns: lang="en">
+<head>
+    <title th:text="${title}">My Spring Boot App</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="#" th:href="@{/fonts/style.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/jquery-ui.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.theme.default.min.css}">
+
+
+    <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div th:insert="(~{admin/components:: header})">This is my header</div>
+
+<h1>Welcome to Dashboard Page!</h1>
+
+<!--Start-->
+
+<div class="container d-flex justify-content-center">
+
+
+    <div class="mt-3 col-md-9">
+        <table class="table table-striped bg-light">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">SecondName</th>
+                <th scope="col">Work</th>
+                <th scope="col">Phone</th>
+                <th scope="col">User</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c:${products}">
+
+                <td th:text="${c.id}">id</td>
+                <td th:text="${c.productName}">ProductName</td>
+                <td th:text="${c.description}">secondName</td>
+                <td>
+                <img src="#" th:src="@{'/images/'+${c.imageUrl}}" alt="User Profile"
+                     class="card-img-top profile-picture">
+                </td>
+
+                <td>
+
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+<!--End-->
+<script src="#" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script src="#" th:src="@{/js/jquery-ui.js}"></script>
+<script src="#" th:src="@{/js/popper.min.js}"></script>
+<script src="#" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="#" th:src="@{/js/owl.carousel.min.js}"></script>
+<script src="#" th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script src="#" th:src="@{/js/aos.js}"></script>
+
+<script src="#" th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns: lang="en">
+<head>
+    <title th:text="${title}">My Spring Boot App</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="#" th:href="@{/fonts/style.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/jquery-ui.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.theme.default.min.css}">
+
+
+    <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div class="site-wrap">
+    <div th:insert="(~{admin/components:: header})">This is my header</div>
+
+
+    <div class="site-blocks-cover inner-page mt-2" data-aos="fade">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="card col-md-6">
+                    <div class="card-header">Update Your Profile</div>
+                    <div class="card-body">
+                        <div th:if="${session.message != null}" class="alert alert-light" role="alert">
+                            <h6 th:text="${session.message.content}"></h6>
+                            <div th:text="${@sessionHelper.removeMessageFromSession()}"></div>
+                        </div>
+
+                        <form action="#" th:action="@{/admin/process-admin}" method="post"
+                              th:object="${user}" enctype="multipart/form-data">
+
+
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input name="name" type="text" class="form-control" id="username"
+                                       th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
+                                       th:value="${user.name}"
+                                       required>
+
+                                <div class="invalid-feedback" th:each="e:${#fields.errors('name')}"
+                                     th:text="${e}"></div>
+                            </div>
+
+
+                            <div>
+                                <input type="file" class="form-control" id="profileImages" name="profileImage">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary mt-3">Update Profile!</button>
+
+
+                        </form>
+                    </div>
+
+
+                </div>
+
+                <div class="card col-md-6">
+                    <div class="card-header">Update Your Password</div>
+                    <div class="card-body">
+                        <!-- Change Password Form -->
+                        <form action="#" th:action="@{/admin/process-password}" method="post">
+                            <!-- Current Password -->
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password:</label>
+                                <input type="password" class="form-control" id="currentPassword" name="currentPassword"
+                                       required>
+                            </div>
+
+                            <!-- New Password -->
+                            <div class="form-group">
+                                <label for="newPassword">New Password:</label>
+                                <input type="password" class="form-control" id="newPassword" name="newPassword"
+                                       required>
+                            </div>
+
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Change Password</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                        </form>
+                        <!-- End Change Password Form -->
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="#" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script src="#" th:src="@{/js/jquery-ui.js}"></script>
+<script src="#" th:src="@{/js/popper.min.js}"></script>
+<script src="#" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="#" th:src="@{/js/owl.carousel.min.js}"></script>
+<script src="#" th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script src="#" th:src="@{/js/aos.js}"></script>
+
+<script src="#" th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

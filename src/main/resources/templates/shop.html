@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns: lang="en">
+<head>
+    <title th:text="${title}">My Spring Boot App</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="#" th:href="@{/fonts/style.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/jquery-ui.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.theme.default.min.css}">
+
+
+    <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="site-wrap">
+    <div th:unless="${#authorization.expression('isAuthenticated()')}"  th:insert="(~{components:: header})">This is my header</div>
+    <div th:if="${#authorization.expression('isAuthenticated()')}"  th:insert="(~{user/base:: header})">This is my header</div>
+
+
+
+    <div class="site-section">
+        <div class="container">
+
+            <div class="row mb-5">
+                <div class="col-md-9 order-1">
+
+                    <div class="row align">
+                        <div class="col-md-12 mb-5">
+                            <div th:insert="(~{components:: searchBox})">This is my header</div>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+
+                        <div th:each="c:${products}" class="col-lg-6 col-md-6 item-entry mb-4">
+                            <a href="#" th:href="@{'/shop-single/'+${c.id}}"  class="product-item md-height bg-gray d-block">
+                                <img src="#" th:src="@{'/images/'+${c.imageUrl}}" alt="Image" class="img-fluid">
+                            </a>
+                            <h2 class="item-title"><a href="#" th:text="${c.productName}">Gray Shoe</a></h2>
+                            <strong class="item-price" th:text="${c.price}">$20.00</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 order-2 mb-5 mb-md-0">
+                    <div class="border p-4 rounded mb-4">
+                        <h2 class="mb-3  text-uppercase text-black d-block">Categories</h2>
+                        <ul th:each="i:${categories}" class="list-unstyled mb-0">
+                            <li class="mb-1">
+                                <a href="#" th:href="@{'/shop/'+${i.key.id}}"  class="d-flex">
+
+                                    <h4><span th:value="${i.key.id}" th:text="${i.key.categoryName}+' '">Men</span></h4>
+                                    <h4><span class="text-black ml-auto" th:text="'('+${i.value}+')'">(2,220)</span></h4>
+
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer th:insert="(~{components:: footer})">This is my footer</footer>
+
+
+</div>
+
+
+<script src="#" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script src="#" th:src="@{/js/jquery-ui.js}"></script>
+<script src="#" th:src="@{/js/popper.min.js}"></script>
+<script src="#" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="#" th:src="@{/js/owl.carousel.min.js}"></script>
+<script src="#" th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script src="#" th:src="@{/js/aos.js}"></script>
+
+<script src="#" th:src="@{/js/main.js}"></script>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+
+
+<script>
+
+    const search = () => {
+        console.log("Searching");
+        let query = $("#search-input").val();
+
+        if (query == "") {
+            $("#searchResults").empty(); // Empty the search results container
+        } else {
+            let url = `http://localhost:8080/search/${query}`;
+            fetch(url)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    let text = `<div class='list-group'>`;
+                    data.forEach((c) => {
+                        text += `<a href='/shop-single/${c.id}' class='list-group-item list-group-action'>${c.productName}</a>`;
+                    });
+                    text += `</div>`;
+
+                    $("#searchResults").html(text);  // Corrected the selector here
+                    $("#searchResults").show();      // Corrected the selector here
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                });
+        }
+    };
+
+</script>
+
+
+
+</body>
+</html>
